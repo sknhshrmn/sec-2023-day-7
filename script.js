@@ -13,9 +13,10 @@ let bmi = 0;
 calculateBtnDOM.addEventListener("click", function (e) {
   e.preventDefault();
 
-  //   check if input of weight is empty or not
+  // Output an alert box if no inputs
+  // check if input of weight is empty or not
   if (inputWeightDOM.value === null || inputWeightDOM.value === "") {
-    //   check if input of height is empty or not
+    // check if input of height is empty or not
     if (inputHeightDOM.value === null || inputHeightDOM.value === "") {
       alert("Please fill in the weight and height!");
     } else {
@@ -26,7 +27,7 @@ calculateBtnDOM.addEventListener("click", function (e) {
     weight = inputWeightDOM.value;
     //   check if input of height is empty or not
     if (inputHeightDOM.value === null || inputHeightDOM.value === "") {
-      alert("Please fill in the height in m!");
+      alert("Please fill in the height!");
     }
     // check if input of height not empty
     else {
@@ -35,38 +36,37 @@ calculateBtnDOM.addEventListener("click", function (e) {
   }
 
   //   Calculate the bmi
+  //   Round bmi to 1 d.p
   if (weight !== 0 && height !== 0) {
     bmi = weight / (height * height);
   }
-
-  //   Round bmi to 1 d.p
   bmiRounded = Math.round(bmi * 10) / 10;
 
   //   Output the bmi advice based on value of bmi
-  //   invalid value
+  //   1. invalid value
   if (bmi === 0) {
     return;
   }
-  // Underweight
+  // 2. Underweight
   else if (bmi < 18.5) {
     bmiAdviceDOM.innerText =
       "BMI is " +
       bmiRounded +
       ". \r\n Underweight : You need to eat more or consult a doctor";
   }
-  // Ideal
+  // 3. Ideal
   else if (bmi >= 18.5 && bmi < 25) {
     bmiAdviceDOM.innerText =
       "BMI is " +
       bmiRounded +
       ". \r\n Ideal : Good job for taking care of your health";
   }
-  // Overweight
+  // 4. Overweight
   else if (bmi >= 25 && bmi < 30) {
     bmiAdviceDOM.innerText =
       "BMI is " + bmiRounded + ". \r\n Overweight : You need to exercise";
   }
-  // Obesity
+  // 5. Obesity
   else if (bmi >= 30) {
     bmiAdviceDOM.innerText =
       "BMI is " +
